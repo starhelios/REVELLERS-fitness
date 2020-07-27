@@ -1,0 +1,105 @@
+/* @import url('https://fonts.googleapis.com/css?family=Lato|Poppins'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&display=swap'); */
+:root {
+    --primaryColor: rgba(182, 100, 58, 1);
+    --secondaryColor: rgba(46, 91, 105, 1);
+    --doveGrey: rgba(167, 169, 172, 1);
+    --stormzyGrey: rgba(97, 97, 97, 1);
+    --mainWhite: #fff;
+    --offWhite: #f7f7f7;
+    --mainBlack: #222;
+    --mainGrey: #ececec;
+    --darkGrey: rgb(117, 117, 117);
+    --mainTransition: all 0.3s linear;
+    --mainSpacing: 4px;
+    --lightShadow: 2px 5px 3px 0px rgba(0, 0, 0, 0.5);
+    --darkShadow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5);
+    --successGreen: rgb(69, 173, 69, 1);
+    --errorRed: rgb(173, 69, 69);
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    color: var(--mainBlack);
+    background: var(--mainWhite);
+    line-height: 1.4;
+    font-size: 1rem;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 1.25rem;
+    font-weight: 300;
+    letter-spacing: var(--mainSpacing);
+}
+a {
+    text-decoration: none;
+}
+p {
+    margin-bottom: 1.25rem;
+}
+a {
+    text-decoration: none;
+}
+/* .defaultHero {
+  min-height: calc(100vh - 62px);
+  background: linear-gradient(rgba(63, 208, 212, 0.7), rgba(0, 0, 0, 0.7)),
+    url("../images/defaultBcg.jpeg") center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+.btn-white,
+.btn-primary {
+    text-transform: uppercase;
+    letter-spacing: var(--mainSpacing);
+    color: var(--mainWhite);
+    border: 2px solid var(--mainWhite);
+    padding: 0.9rem 1.6rem;
+    display: inline-block;
+    transition: var(--mainTransition);
+    cursor: pointer;
+    text-decoration: none;
+}
+.btn-white:hover {
+    background: var(--mainWhite);
+    color: var(--primaryColor);
+    text-decoration: none;
+}
+.btn-primary {
+    background: var(--secondaryColor);
+    color: var(--mainWhite);
+    border: 2px solid var(--secondaryColor);
+    border-radius: 5px;
+}
+.btn-primary:hover {
+    background: transparent;
+    color: var(--primaryColor);
+}
+/* .gatsby-image-wrapper {
+  max-height: 600px;
+  box-shadow: var(--lightShadow);
+} */
+main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}

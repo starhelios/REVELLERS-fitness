@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Password Recovery</title>
+    </head>
+    <body style="font-family: Arial, Helvetica, sans-serif;">
+        <div>
+            <div style="width: 50%; margin: auto; padding-top: 20px;">
+                <h1>Revel Well Password Recovery</h1>
+                <p>
+                    Follow this link to reset your password:
+                </p>
+                <p>
+                    <a
+                        href="{{ .SiteURL }}/recover_user/?recovery_token={{ .Token }}"
+                        >Reset Password</a
+                    >
+                </p>
+                <p>
+                    If you have any problems please
+                    <a href="mailto:info@revelwell.com.au">contact us</a>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>
