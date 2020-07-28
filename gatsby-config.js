@@ -89,7 +89,7 @@ module.exports = {
                 downloadFiles: true,
             },
         },
-        `gatsby-plugin-offline`,
+        `gatsby-plugin-remove-serviceworker`,
         `gatsby-plugin-transition-link`,
         `gatsby-plugin-sitemap`,
         {
