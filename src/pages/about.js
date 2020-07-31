@@ -1,8 +1,8 @@
 import React from 'react';
 import Layout from '../components/layout/layout';
 import styles from '../css/aboutpage.module.css';
-import AniLink from 'gatsby-plugin-transition-link/AniLink';
-import { useStaticQuery, graphql } from 'gatsby';
+
+import { Link, useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
 const About = () => {
@@ -130,11 +130,11 @@ const About = () => {
                             these moments and RevelWell together
                         </p>
 
-                        <AniLink fade to="/app/daily_rides/">
+                        <Link fade to="/app/daily_rides/">
                             <button className="btn-primary">
                                 Ride With Me
                             </button>
-                        </AniLink>
+                        </Link>
                     </article>
                 </div>
             </section>

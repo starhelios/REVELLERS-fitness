@@ -1,7 +1,7 @@
 import React from 'react';
 import Title from '../layout/Title';
 import styles from '../../css/about.module.css';
-import AniLink from 'gatsby-plugin-transition-link/AniLink';
+import { Link } from 'gatsby';
 import Video from '../../components/video/video';
 const About = () => {
     return (
@@ -41,9 +41,9 @@ const About = () => {
                         on personal and individual connection and a two-way
                         dialogue between trainer and clientele.
                     </p>
-                    <AniLink fade to="/app/daily_rides/">
+                    <Link fade to="/app/daily_rides/">
                         <button className="btn-primary">Ride With Me</button>
-                    </AniLink>
+                    </Link>
                 </article>
             </div>
         </section>

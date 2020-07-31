@@ -1,7 +1,7 @@
 import React from 'react';
 import Title from '../components/layout/Title';
 import styles from '../css/success.module.css';
-import AniLink from 'gatsby-plugin-transition-link/AniLink';
+import { Link } from 'gatsby';
 import Layout from '../components/layout/layout';
 const Cancel = () => {
     return (
@@ -23,9 +23,9 @@ const Cancel = () => {
 
                     <h5>The RevelWell Team</h5>
 
-                    <AniLink fade to="/contact/">
+                    <Link fade to="/contact/">
                         <button className="btn-primary">Contact Us</button>
-                    </AniLink>
+                    </Link>
                 </article>
             </section>
         </Layout>

@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '../components/layout/layout';
-import { graphql } from 'gatsby';
-import AniLink from 'gatsby-plugin-transition-link/AniLink';
+import { Link, graphql } from 'gatsby';
+
 import styles from '../css/blog.module.css';
 import BlogCard from '../components/blog/BlogCard';
 import Title from '../components/layout/Title';
@@ -27,13 +27,13 @@ const BlogListTemplate = props => {
                 </div>
                 <section className={styles.links}>
                     {!isFirst && (
-                        <AniLink fade to={previousPage} className={styles.link}>
+                        <Link fade to={previousPage} className={styles.link}>
                             Previous
-                        </AniLink>
+                        </Link>
                     )}
                     {Array.from({ length: numPages }, (_, index) => {
                         return (
-                            <AniLink
+                            <Link
                                 key={index}
                                 fade
                                 to={`/blogs/${index === 0 ? '' : index + 1}`}
@@ -44,13 +44,13 @@ const BlogListTemplate = props => {
                                 }
                             >
                                 {index + 1}
-                            </AniLink>
+                            </Link>
                         );
                     })}
                     {!isLast && (
-                        <AniLink fade to={nextPage} className={styles.link}>
+                        <Link fade to={nextPage} className={styles.link}>
                             Next
-                        </AniLink>
+                        </Link>
                     )}
                 </section>
             </section>

@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
-import { graphql } from 'gatsby';
+import { Link, graphql } from 'gatsby';
 import Layout from '../components/layout/layout';
 import SEO from '../components/layout/seo';
 import { GlobalStateContext } from '../context/GlobalContextProvider';
 import Banner from '../components/layout/Banner';
 import StyledHero from '../components/layout/StyledHero';
-import AniLink from 'gatsby-plugin-transition-link/AniLink';
+
 export const query = graphql`
     {
         allContentfulRideSeriesContentOutline {
@@ -51,9 +51,9 @@ const RideSeries = ({ data }) => {
                     info="From Spin Class Basics to Wedding Shreading. We will let all of our members know when this is released, join us now to get early access"
                 >
                     {state && !state.netlifyLoggedIn && (
-                        <AniLink fade className="btn-white" to="/signup/">
+                        <Link fade className="btn-white" to="/signup/">
                             Join The Crew
-                        </AniLink>
+                        </Link>
                     )}
                 </Banner>
             </StyledHero>

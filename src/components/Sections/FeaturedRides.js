@@ -1,10 +1,8 @@
 import React from 'react';
 import SingleRide from '../../components/common/SingleRide';
-import { useStaticQuery, graphql } from 'gatsby';
+import { Link, useStaticQuery, graphql } from 'gatsby';
 import Title from '../layout/Title';
 import styles from '../../css/items.module.css';
-
-import AniLink from 'gatsby-plugin-transition-link/AniLink';
 
 const FeaturedTours = () => {
     const data = useStaticQuery(graphql`
@@ -45,9 +43,9 @@ const FeaturedTours = () => {
                     return <SingleRide key={node.contentful_id} tour={node} />;
                 })}
             </div>
-            <AniLink fade to="/app/on_demand_rides/" className="btn-primary">
+            <Link fade to="/app/on_demand_rides/" className="btn-primary">
                 On Demand Rides
-            </AniLink>
+            </Link>
         </section>
     );
 };

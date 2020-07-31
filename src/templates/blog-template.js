@@ -1,7 +1,7 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { Link, graphql } from 'gatsby';
 import Layout from '../components/layout/layout';
-import AniLink from 'gatsby-plugin-transition-link/AniLink';
+
 import styles from '../css/single-blog.module.css';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import SEO from '../components/layout/seo';
@@ -54,9 +54,9 @@ const BlogTemplate = ({ data }) => {
                     <article className={styles.post}>
                         {documentToReactComponents(json, options)}
                     </article>
-                    <AniLink fade to="/blog/" className="btn-primary">
+                    <Link fade to="/blog/" className="btn-primary">
                         Back To All Posts
-                    </AniLink>
+                    </Link>
                 </div>
             </section>
         </Layout>

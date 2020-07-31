@@ -4,7 +4,7 @@ import SEO from '../layout/seo';
 import { GlobalStateContext } from '../../context/GlobalContextProvider';
 import Banner from '../../components/layout/Banner';
 import StyledHero from '../../components/layout/StyledHero';
-import AniLink from 'gatsby-plugin-transition-link/AniLink';
+import { Link } from 'gatsby';
 import About from '../Sections/About';
 import Services from '../Sections/Services';
 import SiteLinks from '../Sections/SiteLinks';
@@ -22,9 +22,9 @@ const Index = ({ data }) => {
                     home={true}
                 >
                     {state && !state.netlifyLoggedIn && (
-                        <AniLink fade className="btn-white" to="/signup/">
+                        <Link fade className="btn-white" to="/signup/">
                             Join The Crew
-                        </AniLink>
+                        </Link>
                     )}
                 </Banner>
             </StyledHero>

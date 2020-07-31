@@ -2,17 +2,16 @@ import React from 'react';
 import styles from '../../css/footer.module.css';
 import { menuOptions } from '../../data/footer.js';
 import socialIcons from '../../data/icons';
-import AniLink from 'gatsby-plugin-transition-link/AniLink';
-
+import { Link } from 'gatsby';
 const Footer = () => {
     return (
         <footer className={styles.footer}>
             <div className={styles.links}>
                 {menuOptions.map((link, index) => {
                     return (
-                        <AniLink fade key={index} to={link.slug}>
+                        <Link fade key={index} to={link.slug}>
                             {link.title}
-                        </AniLink>
+                        </Link>
                     );
                 })}
             </div>

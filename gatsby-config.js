@@ -90,7 +90,6 @@ module.exports = {
             },
         },
         `gatsby-plugin-remove-serviceworker`,
-        `gatsby-plugin-transition-link`,
         `gatsby-plugin-sitemap`,
         {
             resolve: 'gatsby-plugin-robots-txt',

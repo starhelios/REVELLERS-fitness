@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '../../css/tour.module.css';
 import Img from 'gatsby-image';
 
-import AniLink from 'gatsby-plugin-transition-link/AniLink';
+import { Link } from 'gatsby';
 const Tour = ({ tour }) => {
     const { title, numberOfLessons, thumbnailImage } = tour;
     const mainImage = thumbnailImage.fluid;
@@ -15,9 +15,9 @@ const Tour = ({ tour }) => {
                     className={styles.img}
                     alt={title || 'Spin Class Ride Series'}
                 />
-                <AniLink fade className={styles.link} to={`/`}>
+                <Link fade className={styles.link} to={`/`}>
                     Coming Soon
-                </AniLink>
+                </Link>
             </div>
             <div className={styles.footer}>
                 <h3>{title}</h3>
