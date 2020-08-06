@@ -76,5 +76,15 @@ const Button = styled.button`
                         color: ${COLORS.white};
                     }
                 `}
+            ${props =>
+                props.disabled &&
+                css`
+                    border: 1px solid ${COLORS.oyster};
+                    color: ${COLORS.oyster};
+                    &:hover {
+                        background: ${COLORS.oyster};
+                        color: ${COLORS.white};
+                    }
+                `}
 `;
 export default Button;

@@ -265,10 +265,10 @@ const BuyBike = () => {
                             }}
                         >
                             <button
-                                className="btn-primary"
-                                onClick={handlBuyClassic}
+                                className="btn-disabled"
+                                //onClick={handlBuyClassic}
                             >
-                                Preorder
+                                SOLD OUT
                             </button>
                         </div>
                     </article>

@@ -21,7 +21,8 @@
 input:focus,
 select:focus,
 textarea:focus,
-button:focus {
+button:focus,
+button:hover {
     outline: none;
 }
 
@@ -93,6 +94,29 @@ a {
 .btn-primary:hover {
     background: transparent;
     color: var(--primaryColor);
+    outline: none;
+}
+
+.btn-disabled {
+    background: var(--stormzyGrey);
+    color: var(--mainWhite);
+    border: 2px solid var(--stormzyGrey);
+    border-radius: 5px;
+    text-transform: uppercase;
+    letter-spacing: var(--mainSpacing);
+    color: var(--mainWhite);
+    border: 2px solid var(--mainWhite);
+    padding: 0.9rem 1.6rem;
+    display: inline-block;
+    transition: var(--mainTransition);
+    cursor: pointer;
+    text-decoration: none;
+}
+.btn-disabled:hover {
+    background: var(--doveGrey);
+    color: var(--doveGrey);
+    color: var(--mainWhite);
+    outline: none;
 }
 /* .gatsby-image-wrapper {
   max-height: 600px;

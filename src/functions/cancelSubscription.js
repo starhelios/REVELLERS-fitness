@@ -1,4 +1,4 @@
-const stripe = require('stripe')(pprocess.env.GATSBY_STRIPE_SECRET_KEY, {
+const stripe = require('stripe')(process.env.GATSBY_STRIPE_SECRET_KEY, { 
     maxNetworkRetries: 2,
 });
 
