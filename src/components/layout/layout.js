@@ -33,6 +33,7 @@ const Layout = ({ children }) => {
     `);
 
     const { user, signupUser, deleteUser, updateUser } = useIdentityContext();
+    console.log('useIdentityContext', useIdentityContext())
 
     const pathName =
         typeof window !== 'undefined' ? window.location.pathname : '';
@@ -50,19 +51,15 @@ const Layout = ({ children }) => {
         });
     }
 
-    const onDeleteUser = () => {
-        deleteUser(user.id).then(user => console.log('response on delete user', user));
-    }
-
     const onChangeEmail = () => {
-        updateUser({ email: email }).then(user => {
+        updateUser(user, { email: email }).then(user => {
             console.log('response on change email', user)
             setShow(false);
         })
     }
 
     const onFormatConfirmation = () => {
-        updateUser({ confirmation_sent_at: null }).then(user => console.log('response on format confirmation', user))
+        updateUser(user, { confirmation_sent_at: null }).then(user => console.log('response on format confirmation', user))
     }
     
     return (
@@ -85,9 +82,6 @@ const Layout = ({ children }) => {
                             </Button>
                             <Button onClick={onResendEmail}>
                                 Re-send Confirm Link
-                            </Button>
-                            <Button onClick={onDeleteUser}>
-                                Delete User
                             </Button>
                             <Button onClick={onFormatConfirmation}>
                                 Delete Confirmation At
