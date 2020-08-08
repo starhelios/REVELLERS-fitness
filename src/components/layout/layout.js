@@ -5,7 +5,7 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
 import Header from './header';
@@ -14,9 +14,11 @@ import { useIdentityContext } from 'react-netlify-identity';
 import './layout.css';
 import Button from '../../styled_components';
 import { Modal, Form, Alert, Container } from 'react-bootstrap';
+import { AuthContext } from '../../context/GlobalContextProvider';
 
 const Layout = ({ children }) => {
 
+    const {signupCredential} = useContext(AuthContext);
     const [show, setShow] = useState(false);
     const [email, setEmail] = useState('');
 
@@ -30,13 +32,21 @@ const Layout = ({ children }) => {
         }
     `);
 
-    const { user } = useIdentityContext();
+    const { user, signupUser } = useIdentityContext();
 
     const pathName =
         typeof window !== 'undefined' ? window.location.pathname : '';
 
-    const handleResend = () => {
+    const onResendEmail = () => {
+        signupUser(signupCredential?.email, signupCredential?.password, signupCredential?.data).then(user => {
+            console.log('response on resend email', user);
+        });
+    }
 
+    const onSendOtherEmail = () => {
+        signupUser(email, signupCredential?.password, signupCredential?.data).then(user => {
+            console.log('response on send other email', user);
+        });
     }
     
     return (
@@ -57,7 +67,7 @@ const Layout = ({ children }) => {
                             <Button signup onClick={() => setShow(true)}>
                                 Re-enter Email
                             </Button>
-                            <Button>
+                            <Button onClick={onResendEmail}>
                                 Re-send Confirm Link
                             </Button>
                             <Modal show={show} onHide={() => setShow(false)}>
@@ -77,7 +87,7 @@ const Layout = ({ children }) => {
                                     <Button onClick={() => setShow(false)}>
                                         Close
                                     </Button>
-                                    <Button signup onClick={handleResend}>
+                                    <Button signup onClick={onSendOtherEmail}>
                                         Resend
                                     </Button>
                                 </Modal.Footer>

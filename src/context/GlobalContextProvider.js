@@ -1,7 +1,8 @@
-import React, { useReducer, createContext } from 'react';
+import React, { useReducer, createContext, useState } from 'react';
 
 export const GlobalStateContext = createContext();
 export const GlobalDispatchContext = createContext();
+export const AuthContext = createContext();
 
 const initialState = {
     netlifyLoggedIn: undefined,
@@ -16,7 +17,7 @@ const reducer = (state, action) => {
                 user: action.user,
             };
         }
-
+        
         default:
             throw new Error('Error');
     }
@@ -24,10 +25,16 @@ const reducer = (state, action) => {
 
 const GlobalContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
+    const [signupCredential, setSignupCredential] = useState({});
     return (
         <GlobalStateContext.Provider value={state}>
             <GlobalDispatchContext.Provider value={dispatch}>
-                {children}
+                <AuthContext.Provider value={{
+                    signupCredential,
+                    setSignupCredential
+                }}>
+                    {children}
+                </AuthContext.Provider>
             </GlobalDispatchContext.Provider>
         </GlobalStateContext.Provider>
     );

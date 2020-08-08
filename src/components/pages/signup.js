@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { navigate, Link, useStaticQuery, graphql } from 'gatsby';
 
 import { Alert, Container, Row, Col, Form } from 'react-bootstrap';
@@ -12,6 +12,7 @@ import COLORS from '../../styles/color';
 import fetchPlans from '../../utils/fetchPlans';
 import redirectToCheckout from '../../utils/redirectToCheckout';
 import fetchStripeSession from '../../utils/fetchStripeSession';
+import { AuthContext } from '../../context/GlobalContextProvider';
 
 const PLAN_PRICE_JOINER_TEXT = ' - $';
 
@@ -33,6 +34,7 @@ const Signup = () => {
         }
     `);
 
+    const {setSignupCredential} = useContext(AuthContext);
     const [userCredentials, setUserCredentials] = useState({
         full_name: undefined,
         email: undefined,
@@ -104,6 +106,16 @@ const Signup = () => {
                 res.json()
             })
             .then(data => {
+                console.log('signup user data', data)
+                setSignupCredential({
+                    email,
+                    password,
+                    data: {
+                        full_name,
+                        userPackage,
+                        stripeId: data?.customer?.id,
+                    }
+                })
                 signupUser(email, password, {
                     full_name,
                     userPackage,
@@ -119,13 +131,13 @@ const Signup = () => {
                     };
                     const metaData = {};
 
-                    redirectToCheckout(
-                        event,
-                        user,
-                        lineItems,
-                        metaData,
-                        subscription
-                    );
+                    // redirectToCheckout(
+                    //     event,
+                    //     user,
+                    //     lineItems,
+                    //     metaData,
+                    //     subscription
+                    // );
                 });
             })
             .then(() => {
