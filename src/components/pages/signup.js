@@ -100,7 +100,9 @@ const Signup = () => {
         setIsLoading(true);
 
         addStripeCustomer({ name: full_name, email })
-            .then(res => res.json())
+            .then(res => {
+                res.json()
+            })
             .then(data => {
                 signupUser(email, password, {
                     full_name,
