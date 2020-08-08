@@ -32,8 +32,7 @@ const Layout = ({ children }) => {
         }
     `);
 
-    const { user, signupUser, deleteUser, updateUser } = useIdentityContext();
-    console.log('useIdentityContext', useIdentityContext())
+    const { user, signupUser } = useIdentityContext();
 
     const pathName =
         typeof window !== 'undefined' ? window.location.pathname : '';
@@ -49,17 +48,6 @@ const Layout = ({ children }) => {
             console.log('response on send other email', user);
             setShow(false);
         });
-    }
-
-    const onChangeEmail = () => {
-        updateUser(user, { email: email }).then(user => {
-            console.log('response on change email', user)
-            setShow(false);
-        })
-    }
-
-    const onFormatConfirmation = () => {
-        updateUser(user, { confirmation_sent_at: null }).then(user => console.log('response on format confirmation', user))
     }
     
     return (
@@ -83,9 +71,6 @@ const Layout = ({ children }) => {
                             <Button onClick={onResendEmail}>
                                 Re-send Confirm Link
                             </Button>
-                            <Button onClick={onFormatConfirmation}>
-                                Delete Confirmation At
-                            </Button>
                             <Modal show={show} onHide={() => setShow(false)}>
                                 <Modal.Header closeButton className='border-0'>
                                     <Modal.Title>Enter your email</Modal.Title>
@@ -105,9 +90,6 @@ const Layout = ({ children }) => {
                                     </Button>
                                     <Button signup onClick={onSendOtherEmail}>
                                         Resend
-                                    </Button>
-                                    <Button onClick={onChangeEmail}>
-                                        Change Email
                                     </Button>
                                 </Modal.Footer>
                             </Modal>
