@@ -32,7 +32,7 @@ const Layout = ({ children }) => {
         }
     `);
 
-    const { user, signupUser } = useIdentityContext();
+    const { user, signupUser, deleteUser, updateUser } = useIdentityContext();
 
     const pathName =
         typeof window !== 'undefined' ? window.location.pathname : '';
@@ -46,7 +46,23 @@ const Layout = ({ children }) => {
     const onSendOtherEmail = () => {
         signupUser(email, signupCredential?.password, signupCredential?.data).then(user => {
             console.log('response on send other email', user);
+            setShow(false);
         });
+    }
+
+    const onDeleteUser = () => {
+        deleteUser(user.id).then(user => console.log('response on delete user', user));
+    }
+
+    const onChangeEmail = () => {
+        updateUser({ email: email }).then(user => {
+            console.log('response on change email', user)
+            setShow(false);
+        })
+    }
+
+    const onFormatConfirmation = () => {
+        updateUser({ confirmation_sent_at: null }).then(user => console.log('response on format confirmation', user))
     }
     
     return (
@@ -70,6 +86,12 @@ const Layout = ({ children }) => {
                             <Button onClick={onResendEmail}>
                                 Re-send Confirm Link
                             </Button>
+                            <Button onClick={onDeleteUser}>
+                                Delete User
+                            </Button>
+                            <Button onClick={onFormatConfirmation}>
+                                Delete Confirmation At
+                            </Button>
                             <Modal show={show} onHide={() => setShow(false)}>
                                 <Modal.Header closeButton className='border-0'>
                                     <Modal.Title>Enter your email</Modal.Title>
@@ -89,6 +111,9 @@ const Layout = ({ children }) => {
                                     </Button>
                                     <Button signup onClick={onSendOtherEmail}>
                                         Resend
+                                    </Button>
+                                    <Button onClick={onChangeEmail}>
+                                        Change Email
                                     </Button>
                                 </Modal.Footer>
                             </Modal>
