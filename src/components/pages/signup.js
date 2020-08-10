@@ -102,9 +102,7 @@ const Signup = () => {
         setIsLoading(true);
 
         addStripeCustomer({ name: full_name, email })
-            .then(res => {
-                res.json()
-            })
+            .then(res => res.json())
             .then(data => {
                 console.log('signup user data', data)
                 setSignupCredential({

@@ -196,10 +196,10 @@ const BuyBike = () => {
                             }}
                         >
                             <button
-                                className="btn-primary"
-                                onClick={handleBuyPerformance}
+                                className="btn-disabled"
+                                //onClick={handleBuyPerformance}
                             >
-                                Preorder
+                                Sold Out
                             </button>
                         </div>
                     </article>

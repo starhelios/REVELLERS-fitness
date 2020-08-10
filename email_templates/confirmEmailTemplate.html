@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Confirm your signup</title>
+  </head>
+  <body style="font-family: Arial, Helvetica, sans-serif;">
+    <div>
+      <div style="width: 50%; margin: auto; padding-top: 20px;">
+        <h2>Confirm your signup</h2>
+
+        <p>Follow this link to confirm your user:</p>
+        <p><a href="{{ .SiteURL }}/signup_confirmed?confirmation_token={{ .Token }}">Confirm your mail</a></p>
+      </div>
+    </div>
+  </body>
+</html>
