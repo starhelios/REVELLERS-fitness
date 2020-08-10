@@ -133,13 +133,13 @@ const Signup = () => {
                     };
                     const metaData = {};
 
-                    redirectToCheckout(
-                        event,
-                        user,
-                        lineItems,
-                        metaData,
-                        subscription
-                    );
+                    // redirectToCheckout(
+                    //     event,
+                    //     user,
+                    //     lineItems,
+                    //     metaData,
+                    //     subscription
+                    // );
                 });
             })
             .then(() => {
