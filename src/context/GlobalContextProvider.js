@@ -1,4 +1,4 @@
-import React, { useReducer, createContext, useState } from 'react';
+import React, { useReducer, createContext, useState, useEffect } from 'react';
 
 export const GlobalStateContext = createContext();
 export const GlobalDispatchContext = createContext();
@@ -25,9 +25,24 @@ const reducer = (state, action) => {
 
 const GlobalContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
+
+    let lsAuthUser = localStorage.getItem('revel-user');
+    console.log("hey", JSON.parse(lsAuthUser))
     const [signupCredential, setSignupCredential] = useState({});
     const [authUser, setAuthUser] = useState({});
 
+    const setAuthUserContext = (user) => {
+        localStorage.setItem('revel-user', JSON.stringify(user))
+        setAuthUser(user)
+    }
+
+    const getAuthUser = async() => {
+        let lsAuthUser = await localStorage.getItem('revel-user');
+        if (lsAuthUser) setAuthUser(JSON.parse(lsAuthUser));
+    }
+    useEffect(() => {
+        getAuthUser();
+    }, [])
     return (
         <GlobalStateContext.Provider value={state}>
             <GlobalDispatchContext.Provider value={dispatch}>
@@ -35,7 +50,7 @@ const GlobalContextProvider = ({ children }) => {
                     signupCredential,
                     setSignupCredential,
                     authUser,
-                    setAuthUser
+                    setAuthUserContext
                 }}>
                     {children}
                 </AuthContext.Provider>

@@ -34,7 +34,7 @@ const Signup = () => {
         }
     `);
 
-    const {setSignupCredential, setAuthUser} = useContext(AuthContext);
+    const {setSignupCredential, setAuthUserContext} = useContext(AuthContext);
     const [userCredentials, setUserCredentials] = useState({
         full_name: undefined,
         email: undefined,
@@ -122,7 +122,7 @@ const Signup = () => {
                     stripeId: data?.customer?.id,
                 }).then(user => {
                     console.log("res", user)
-                    setAuthUser(user)
+                    setAuthUserContext(user)
                     const lineItems = {};
                     const subscription = {
                         items: [

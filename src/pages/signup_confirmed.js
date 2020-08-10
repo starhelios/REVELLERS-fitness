@@ -1,15 +1,16 @@
 import React, { useEffect, useContext } from 'react'
-import { AuthContext } from '../../context/GlobalContextProvider';
-import redirectToCheckout from '../../utils/redirectToCheckout';
+import { AuthContext } from '../context/GlobalContextProvider';
+import redirectToCheckout from '../utils/redirectToCheckout';
 
-export default function SignUpConfirmed() {
+const SignUpConfirmed = () => {
 
   const {authUser} = useContext(AuthContext);
+  console.log({authUser});
 
   useEffect(() => {
     const subscription = {
       items: [{
-          plan: user?.user_metadata?.userPackage,
+          plan: authUser?.user_metadata?.userPackage,
       }],
     };
 
@@ -27,4 +28,6 @@ export default function SignUpConfirmed() {
       Confirmed page!
     </div>
   )
-}
+};
+
+export default SignUpConfirmed;
