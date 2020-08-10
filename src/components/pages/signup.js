@@ -240,7 +240,7 @@ const Signup = () => {
                             <Form.Group controlId="formBasicPassword">
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control
-                                    type="text"
+                                    type="password"
                                     placeholder="Password"
                                     name="password"
                                     onChange={handleUpdate}
