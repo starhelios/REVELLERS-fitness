@@ -26,8 +26,6 @@ const reducer = (state, action) => {
 const GlobalContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
-    let lsAuthUser = localStorage.getItem('revel-user');
-    console.log("hey", JSON.parse(lsAuthUser))
     const [signupCredential, setSignupCredential] = useState({});
     const [authUser, setAuthUser] = useState({});
 
