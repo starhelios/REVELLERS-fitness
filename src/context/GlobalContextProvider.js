@@ -26,12 +26,16 @@ const reducer = (state, action) => {
 const GlobalContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const [signupCredential, setSignupCredential] = useState({});
+    const [authUser, setAuthUser] = useState({});
+
     return (
         <GlobalStateContext.Provider value={state}>
             <GlobalDispatchContext.Provider value={dispatch}>
                 <AuthContext.Provider value={{
                     signupCredential,
-                    setSignupCredential
+                    setSignupCredential,
+                    authUser,
+                    setAuthUser
                 }}>
                     {children}
                 </AuthContext.Provider>

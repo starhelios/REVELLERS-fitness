@@ -34,7 +34,7 @@ const Signup = () => {
         }
     `);
 
-    const {setSignupCredential} = useContext(AuthContext);
+    const {setSignupCredential, setAuthUser} = useContext(AuthContext);
     const [userCredentials, setUserCredentials] = useState({
         full_name: undefined,
         email: undefined,
@@ -121,6 +121,8 @@ const Signup = () => {
                     userPackage,
                     stripeId: data?.customer?.id,
                 }).then(user => {
+                    console.log("res", user)
+                    setAuthUser(user)
                     const lineItems = {};
                     const subscription = {
                         items: [
@@ -131,13 +133,13 @@ const Signup = () => {
                     };
                     const metaData = {};
 
-                    // redirectToCheckout(
-                    //     event,
-                    //     user,
-                    //     lineItems,
-                    //     metaData,
-                    //     subscription
-                    // );
+                    redirectToCheckout(
+                        event,
+                        user,
+                        lineItems,
+                        metaData,
+                        subscription
+                    );
                 });
             })
             .then(() => {
