@@ -34,13 +34,14 @@ const Signup = () => {
         }
     `);
 
-    const {setSignupCredential, setAuthUserContext} = useContext(AuthContext);
+    const { setSignupCredential, setAuthUserContext } = useContext(AuthContext);
     const [userCredentials, setUserCredentials] = useState({
         full_name: undefined,
         email: undefined,
         password: undefined,
         userPackage: 'plan_HF8Tc4J2WjLDAg',
     });
+
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
     const [plans, setPlans] = useState([]);
@@ -104,7 +105,7 @@ const Signup = () => {
         addStripeCustomer({ name: full_name, email })
             .then(res => res.json())
             .then(data => {
-                console.log('signup user data', data)
+                console.log('signup user data', data);
                 setSignupCredential({
                     email,
                     password,
@@ -112,15 +113,18 @@ const Signup = () => {
                         full_name,
                         userPackage,
                         stripeId: data?.customer?.id,
-                    }
-                })
+                    },
+                });
                 signupUser(email, password, {
                     full_name,
                     userPackage,
                     stripeId: data?.customer?.id,
                 }).then(user => {
-                    console.log("res", user)
-                    setAuthUserContext(user)
+                    console.log(
+                        'Respsonse from SignUp Page, No Redirect: ',
+                        user
+                    );
+                    setAuthUserContext(user);
                     const lineItems = {};
                     const subscription = {
                         items: [
@@ -237,6 +241,35 @@ const Signup = () => {
                                 </Form.Text>
                             </Form.Group>
 
+                            <Form.Group controlId="formBasicEmail">
+                                <Form.Label>Confirm Email Address</Form.Label>
+                                <Form.Control
+                                    type="email"
+                                    placeholder="Confirm Email Address"
+                                    name="reenterEmail"
+                                    onChange={handleUpdate}
+                                />
+
+                                {userCredentials.email ===
+                                userCredentials.reenterEmail ? (
+                                    <Form.Text className="text-muted">
+                                        We'll be sending you a verification
+                                        email, so lets make sure we have the
+                                        right address.
+                                    </Form.Text>
+                                ) : (
+                                    <Form.Text
+                                        className="font-bold"
+                                        style={{
+                                            color: '#FF0000',
+                                        }}
+                                    >
+                                        Email addresses do not match. Please
+                                        check them.
+                                    </Form.Text>
+                                )}
+                            </Form.Group>
+
                             <Form.Group controlId="formBasicPassword">
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control
@@ -293,7 +326,9 @@ const Signup = () => {
                                         !email ||
                                         !password ||
                                         !full_name ||
-                                        !userPackage
+                                        !userPackage ||
+                                        userCredentials.email !==
+                                            userCredentials.reenterEmail
                                     }
                                 >
                                     Proceed To Secure Checkout{' '}

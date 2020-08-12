@@ -13,6 +13,7 @@ import redirectToCheckout from '../../utils/redirectToCheckout';
 import fetchCustomerSubscriptions from '../../utils/fetchCustomerSubscriptions';
 import cancelStripeSubscription from '../../utils/cancelStripeSubscription';
 import applyCouponCode from '../../utils/applyCouponCode';
+import createBillingDashboardSession from '../../utils/createBillingDashboardSession';
 import getAllCouponCodes from '../../utils/getAllCouponCodes';
 import { RiMedal2Line } from 'react-icons/ri';
 import styles from '../../css/profile.module.css';
@@ -80,6 +81,14 @@ const Profile = ({ location }) => {
     };
     const toggleCouponFailure = () => {
         setCouponFailure(showCouponFailure => !showCouponFailure);
+    };
+
+    const startBillingDashboard = () => {
+        console.log(stripeId);
+        createBillingDashboardSession(stripeId)
+            .then(res => res.json())
+            .then(data => navigate(data.customer.url))
+            .catch(err => console.error(err));
     };
 
     useEffect(() => {
