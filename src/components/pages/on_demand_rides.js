@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
-import SEO from '../layout/seo';
-import OnDemandVideo from '../../components/common/OnDemandVideo';
+import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { Row, Container } from 'react-bootstrap';
-import fetchStripeSession from '../../utils/fetchStripeSession';
-import fetchPurchasedVideos from '../../utils/fetchPurchasedVideos';
 import { useIdentityContext } from 'react-netlify-identity';
+
+import SEO from '../layout/seo';
 import Banner from '../layout/Banner';
 import StyledHero from '../layout/StyledHero';
+import OnDemandVideo from '../../components/common/OnDemandVideo';
+import fetchStripeSession from '../../utils/fetchStripeSession';
+import fetchPurchasedVideos from '../../utils/fetchPurchasedVideos';
+import fetchCustomerSubscriptions from '../../utils/fetchCustomerSubscriptions';
 
 const OnDemandRides = () => {
     const data = useStaticQuery(graphql`
@@ -46,6 +48,27 @@ const OnDemandRides = () => {
     const { stripeId } = user?.user_metadata || {};
 
     const [purchasedVideos, setPurchasedVideos] = useState([]);
+
+    useEffect(() => {
+        if (!window) {
+            return;
+        }
+
+        fetchCustomerSubscriptions({ stripeId })
+            .then(res => res.json())
+            .then(({ subscriptions = {} }) => {
+                const activeSubscriptions = subscriptions?.data?.filter(
+                    ({ canceled_at, cancel_at }) =>
+                        !canceled_at ||
+                        new Date(cancel_at * 1000).getTime() >= new Date()
+                );
+                const hasSubscription = !!activeSubscriptions?.length;
+
+                if (!hasSubscription) {
+                    navigate('/app/profile');
+                }
+            });
+    }, []);
 
     useEffect(() => {
         if (!window) {

@@ -2,14 +2,14 @@ import React, { useContext, useEffect } from 'react';
 import { Link, navigate } from 'gatsby';
 import PropTypes from 'prop-types';
 import { Navbar, Nav, Form } from 'react-bootstrap';
-import Button from '../../styled_components';
+import { IoIosLogOut, IoIosContact } from 'react-icons/io';
 import { useIdentityContext } from 'react-netlify-identity';
+
+import Button from '../../styled_components';
 import COLORS from '../../styles/color';
 import { menuOptions } from '../../data/menu.js';
 import { GlobalDispatchContext } from '../../context/GlobalContextProvider';
 import Logo from '../../images/logo_light.png';
-
-import { IoIosLogOut, IoIosContact } from 'react-icons/io';
 import styles from '../../css/header.module.css';
 
 const Header = ({ siteTitle, pathName }) => {

@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react';
+import { useStaticQuery, graphql, navigate } from 'gatsby';
+import { Col, Row, Container } from 'react-bootstrap';
+import { useIdentityContext } from 'react-netlify-identity';
+
 import SEO from '../layout/seo';
 import { get } from 'lodash';
 import Video from '../video/video';
-import { useIdentityContext } from 'react-netlify-identity';
-
-import { Col, Row, Container } from 'react-bootstrap';
-import { useStaticQuery, graphql, navigate } from 'gatsby';
 import '../../utils/fontawesome';
-
 import FeedbackForm from '../Forms/FeedbackForm';
 import fetchCustomerSubscriptions from '../../utils/fetchCustomerSubscriptions';
 

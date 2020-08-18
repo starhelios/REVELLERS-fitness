@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
-
-import SEO from '../layout/seo';
-import OnDemandVideo from '../../components/common/OnDemandVideo';
 import { Row, Container, Col } from 'react-bootstrap';
-import fetchStripeSession from '../../utils/fetchStripeSession';
-import fetchPurchasedVideos from '../../utils/fetchPurchasedVideos';
 import { useIdentityContext } from 'react-netlify-identity';
 
-import fetchCustomerSubscriptions from '../../utils/fetchCustomerSubscriptions';
+import SEO from '../layout/seo';
 import Banner from '../layout/Banner';
 import StyledHero from '../layout/StyledHero';
+import OnDemandVideo from '../../components/common/OnDemandVideo';
+import fetchStripeSession from '../../utils/fetchStripeSession';
+import fetchPurchasedVideos from '../../utils/fetchPurchasedVideos';
+import fetchCustomerSubscriptions from '../../utils/fetchCustomerSubscriptions';
 
 const Yoga = () => {
     const data = useStaticQuery(graphql`

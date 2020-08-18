@@ -1,6 +1,6 @@
 import React from 'react';
-
 import { useStaticQuery, graphql } from 'gatsby';
+
 import Title from '../layout/Title';
 import styles from '../../css/items.module.css';
 import SiteLinkCard from '../common/SiteLinkCard';

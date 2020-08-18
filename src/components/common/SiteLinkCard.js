@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'gatsby';
 import styles from '../../css/blog-card.module.css';
 import Img from 'gatsby-image';
-import { Link } from 'gatsby';
+
 const SiteLinkCard = ({ card }) => {
     const { slug, title, createdAt, headerImage, isPrivate } = card;
 
