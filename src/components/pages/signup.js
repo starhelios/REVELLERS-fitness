@@ -182,12 +182,6 @@ const Signup = () => {
                 <Row className="w-75 pt-4">
                     <Col className="border rounded-lg p-5 mb-5">
                         <h1 className="m-auto py-4">Join The Crew</h1>
-                        <p>
-                            For $14.95 AUD a week, you are a part of the
-                            RevelWell family, and can access all Daily Rides,
-                            Yoga Flows and Rides Series programs, as well as
-                            purchase On-Demand Rides for just $4.95 AUD.
-                        </p>
                         <p style={{ fontWeight: 'bold' }}>
                             7 Day Free Trial Cancel Anytime Zero Cancellation
                             Fees 
@@ -197,16 +191,13 @@ const Signup = () => {
                         </p>
                         <ul style={{ marginLeft: 15 }}>
                             <li>
-                                7 New Daily Rides Per Week. Available Anytime
-                                24hrs A Day To Stream
+                                All Rides &amp; All Yoga Flows Available
+                                Anytime, Anywhere In The World
                             </li>
-                            <li>Unlimited On Demand Yoga</li>
                             <li>Direct Dialogue With Your Trainer</li>
+                            <li>All for $14.95 AUD per week</li>
                         </ul>
-                        <p>
-                            Sign Up Now To Unlock Content, Access To On Demand
-                            Ride Library &amp; Access To Ride Series
-                        </p>
+                        <p>You will not be charged for your first 7 days</p>
                         {isError && !isLoading ? (
                             <Alert variant="danger">
                                 <FontAwesomeIcon icon="heart-broken" /> Its Not

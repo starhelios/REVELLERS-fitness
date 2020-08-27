@@ -4,9 +4,9 @@ import { FaBicycle, FaLockOpen, FaPeace } from 'react-icons/fa';
 export default [
     {
         icon: <FaBicycle />,
-        title: 'Fresh Rides Daily',
+        title: 'Choose Your Ride',
         text:
-            'Brand new 45 minute ride training session released every single day and available for you to stream for 24 hours',
+            'Choose from a huge selection of rides to suit your mood and energise your day',
     },
     {
         icon: <FaLockOpen />,

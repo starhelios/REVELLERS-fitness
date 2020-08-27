@@ -11,8 +11,8 @@ const About = () => {
                 <article className={styles.aboutImg}>
                     <div className={styles.imgContainer}>
                         <Video
-                            videoSrcURL="https://stream.mux.com/pXjw5T00zcEQhUbMq15poDAqjJhhXw01vUkKiVtZKZERQ.m3u8"
-                            posterImage="https://image.mux.com/pXjw5T00zcEQhUbMq15poDAqjJhhXw01vUkKiVtZKZERQ/thumbnail.png?width=300&time=19.9&fit_mode=pad"
+                            videoSrcURL="https://stream.mux.com/AXqCdIllYWKsXcK1QFB00ly2u00iX7GAYnpoDWwOC0267I.m3u8"
+                            posterImage="https://image.mux.com/AXqCdIllYWKsXcK1QFB00ly2u00iX7GAYnpoDWwOC0267I/thumbnail.png?time=9"
                             videoID="Home Page Sizzle"
                         />
                     </div>
@@ -27,10 +27,8 @@ const About = () => {
                         you.
                     </p>
                     <p>
-                        Choose from Daily Rides, Yoga Classes and Courses, Ride
-                        Series to target specific skills and a growing On Demand
-                        menu where you can select your training routine based on
-                        your mood.
+                        Choose from a huge selection of Rides and Yoga Flows
+                        that you can access at a time that suits YOU!
                     </p>
                     <p>
                         Our purpose is to empower people with choice on how,
@@ -41,7 +39,7 @@ const About = () => {
                         on personal and individual connection and a two-way
                         dialogue between trainer and clientele.
                     </p>
-                    <Link fade to="/app/daily_rides/">
+                    <Link to="/app/daily_rides/">
                         <button className="btn-primary">Ride With Me</button>
                     </Link>
                 </article>

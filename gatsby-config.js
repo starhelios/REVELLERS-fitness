@@ -14,6 +14,7 @@ module.exports = {
     },
     plugins: [
         `gatsby-plugin-react-helmet`,
+        `gatsby-plugin-netlify`,
         {
             resolve: `gatsby-source-filesystem`,
             options: {
@@ -52,6 +53,12 @@ module.exports = {
                 spaceId: `plipsjpke5ju`,
                 // Learn about environment variables: https://gatsby.dev/env-vars
                 accessToken: process.env.GATSBY_CONTENTFUL_ACCESS_TOKEN,
+            },
+        },
+        {
+            resolve: `gatsby-plugin-styled-components`,
+            options: {
+                // Add any options here
             },
         },
         {
