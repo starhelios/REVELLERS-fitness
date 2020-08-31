@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { Col, Row, Container } from 'react-bootstrap';
 import { useIdentityContext } from 'react-netlify-identity';
-
+import Button from '../../styled_components/Button';
 import SEO from '../layout/seo';
 import { get } from 'lodash';
 import Video from '../video/video';
@@ -77,6 +77,13 @@ const DailyRides = () => {
                         <h4 className="text-center">
                             {data.dailyRide.edges[0].node.description}
                         </h4>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col className="text-center">
+                        <Button onClick={() => window.location.reload(true)}>
+                            Get Latest Ride
+                        </Button>
                     </Col>
                 </Row>
             </Container>

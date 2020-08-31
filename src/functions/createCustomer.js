@@ -1,25 +1,26 @@
+require('dotenv').config();
 const stripe = require('stripe')(process.env.GATSBY_STRIPE_SECRET_KEY);
 
 function stripeCreate(email, name) {
     return new Promise((resolve, reject) => {
         stripe.customers
-        .create({
-            email,
-            name,
-        })
-        .then(customer => {
-            resolve(customer);
-        })
-        .catch(error => {
-            reject(error);
-        });
-    })
+            .create({
+                email,
+                name,
+            })
+            .then(customer => {
+                resolve(customer);
+            })
+            .catch(error => {
+                reject(error);
+            });
+    });
 }
 
 function sleep() {
     return new Promise((resolve, reject) => {
         setTimeout(() => resolve(true), 1000);
-    })
+    });
 }
 
 export async function handler(event, context, callback) {
@@ -55,5 +56,5 @@ export async function handler(event, context, callback) {
                 error: error.message,
             }),
         });
-    }     
+    }
 }

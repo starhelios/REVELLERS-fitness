@@ -1,4 +1,5 @@
-var stripe = require('stripe')(process.env.GATSBY_STRIPE_SECRET_KEY);
+require('dotenv').config();
+const stripe = require('stripe')(process.env.GATSBY_STRIPE_SECRET_KEY);
 export function handler(event, context, callback) {
     const data = JSON.parse(event.body);
     const { stripeId } = data;
