@@ -5,19 +5,16 @@ const terms = () => {
     return (
         <>
             <Layout>
-                <Container>
-                    <Row className="my-5 text-justify">
-                        <h1>Terms Of Use</h1>
+                <Container className="my-5 p-5">
+                    <Row>
+                        <h1 className="text-center">Terms Of Use</h1>
                         <h3>
                             PLEASE READ THESE TERMS OF USE CAREFULLY BEFORE
                             USING THIS WEBSITE.
                         </h3>
-                        <p>
-                            By using this website, you signify your consent to
-                            these terms of use. If you do not agree to these
-                            Terms of Use, please do not use the website. Your
-                            access to and use of this website operated by
-                            Revelwell LTD PTY (collectively the “Site”) is
+                        <p className="text-justify">
+                            Your access to and use of this website operated by
+                            RevelWell PTY LTD (collectively the “Site”) is
                             subject to the following terms and conditions
                             (“Terms of Use”) and all applicable laws. By
                             accessing and browsing the Site, you accept, without
@@ -26,7 +23,7 @@ const terms = () => {
                             and the Site are superseded and of no force or
                             effect:
                         </p>{' '}
-                        <p>
+                        <p className="text-justify">
                             1. You agree that the Site itself, as well as all
                             content, videos, training materials, products,
                             services and/or other materials, made available on
@@ -34,7 +31,7 @@ const terms = () => {
                             the look and feel of all of the foregoing,
                             (collectively referred to as the “Content”) are
                             maintained for your personal use and information by
-                            Revelwell Pty Ltd, (the “Company”) and are the
+                            RevelWell Pty Ltd, (the “Company”) and are the
                             property of the Company and/or its third party
                             providers. You agree that such Company Content shall
                             include all proprietary videos, HTML/CSS,
@@ -63,7 +60,7 @@ const terms = () => {
                             commercial purposes without the express written
                             permission of the Company.
                         </p>{' '}
-                        <p>
+                        <p className="text-justify">
                             2. All Content, such as text, data, graphics files,
                             videos and sound files, and other materials
                             contained in the Site, are copyrighted unless
@@ -72,13 +69,13 @@ const terms = () => {
                             may be used except as provided in these Terms of
                             Use.
                         </p>
-                        <p>
+                        <p className="text-justify">
                             {' '}
                             3. All trade names, trademarks, and images and
                             biographical information of people used in the
                             Company Content and contained in the Site, including
                             without limitation the name and trademark
-                            “Revelwell”, are either the property of, or used
+                            “RevelWell”, are either the property of, or used
                             with permission by, the Company. The use of Content
                             by you is strictly prohibited unless specifically
                             permitted by these Terms of Use. Any unauthorized
@@ -96,7 +93,7 @@ const terms = () => {
                             The Company has the right, but has no obligation, to
                             remove content and accounts containing materials
                             that it deems, in its sole discretion, to be
-                            unlawful, offensive, threatening, libelous,
+                            unlawful, offensive, threatening, libellous,
                             defamatory, pornographic, obscene or otherwise
                             objectionable or violates any party’s intellectual
                             property or these Terms of Use. If you believe that
@@ -111,7 +108,7 @@ const terms = () => {
                             violation, and any other information you believe is
                             relevant.
                         </p>
-                        <p>
+                        <p className="text-justify">
                             {' '}
                             4. While the Company uses reasonable efforts to
                             include accurate and up-to-date information in the
@@ -120,7 +117,7 @@ const terms = () => {
                             assumes no liability or responsibility for any
                             errors or omissions in the content of the Site.
                         </p>
-                        <p>
+                        <p className="text-justify">
                             {' '}
                             5. When you register with the Company and/or this
                             Site, you expressly consent to receive any notices,
@@ -129,9 +126,9 @@ const terms = () => {
                             services, or other records or correspondence from
                             the Company. You consent to receive notices
                             electronically by way of transmitting the notice to
-                            you by email.{' '}
+                            you by email.
                         </p>
-                        <p>
+                        <p className="text-justify">
                             6. If you send comments or suggestions about the
                             Site to the Company, including, but not limited to,
                             notes, text, drawings, images, designs or computer
@@ -146,8 +143,7 @@ const terms = () => {
                             purpose, commercial or otherwise without any
                             acknowledgement or compensation to you.
                         </p>
-                        <p>
-                            {' '}
+                        <p className="text-justify">
                             7. The Company shall use commercially reasonable
                             efforts to restrict unauthorized access to our data
                             and files. However, no system whether or not
@@ -158,7 +154,7 @@ const terms = () => {
                             using the Site. Use of the Site is completely at
                             your own risk.
                         </p>
-                        <p>
+                        <p className="text-justify">
                             {' '}
                             8. The Company will not intentionally disclose any
                             personally identifying information about you to
@@ -166,13 +162,12 @@ const terms = () => {
                             faith, believes such disclosure is necessary to
                             comply with the law or enforce these Terms of Use.
                             By using the Site, you signify your acceptance of
-                            the Company’s Privacy
-                            Policy,https://revelwell.com.au/privacy-policy/. If
-                            you do not agree with this Privacy Policy, in whole
-                            or part, please do not use this Site.
+                            the Company’s Privacy Policy,
+                            https://revelwell.com.au/privacy-policy/. If you do
+                            not agree with this Privacy Policy, in whole or
+                            part, please do not use this Site.
                         </p>
-                        <p>
-                            {' '}
+                        <p className="text-justify">
                             9. NEITHER THE COMPANY NOR ANY OTHER PARTY INVOLVED
                             IN CREATING, PRODUCING, OR MAINTAINING THE SITE
                             AND/OR ANY CONTENT ON THE SITE SHALL BE LIABLE UNDER
@@ -221,7 +216,7 @@ const terms = () => {
                             allow the exclusion of implied warranties. Some of
                             the above exclusions may thus not apply to you.
                         </p>
-                        <p>
+                        <p className="text-justify">
                             10. THE COMPANY SHALL NOT BE RESPONSIBLE FOR ANY
                             PERFORMANCE OR SERVICE PROBLEMS CAUSED BY ANY THIRD
                             PARTY WEBSITE OR THIRD PARTY SERVICE PROVIDER
@@ -253,7 +248,7 @@ const terms = () => {
                             TO THE COMPANY’S CUSTOMER LICENSE AGREEMENT OR
                             OTHERWISE, REGARDLESS OF THE REASON FOR DISRUPTION.
                         </p>
-                        <p>
+                        <p className="text-justify">
                             11. IN NO EVENT SHALL THE COMPANY BE LIABLE FOR ANY
                             SPECIAL, INCIDENTAL, INDIRECT, PUNITIVE, RELIANCE OR
                             CONSEQUENTIAL DAMAGES, WHETHER FORESEEABLE OR NOT,
@@ -270,7 +265,7 @@ const terms = () => {
                             COMPANY HAS BEEN ADVISED OR IS AWARE OF THE
                             POSSIBILITY OF SUCH DAMAGES.
                         </p>
-                        <p>
+                        <p className="text-justify">
                             12. You agree to indemnify and hold the Company and
                             each of its directors, officers employees, and
                             agents, harmless from any and all liabilities,
@@ -289,17 +284,16 @@ const terms = () => {
                             for which we are entitled to indemnification under
                             this Section. In such event, you shall provide the
                             Company with such cooperation as is reasonably
-                            requested by the Company.{' '}
+                            requested by the Company.
                         </p>
-                        <p>
+                        <p className="text-justify">
                             13. The provisions of these Terms of Use are for the
                             benefit of the Company, its subsidiaries, affiliates
                             and its third party content providers and licensors,
                             and each shall have the right to assert and enforce
                             such provisions directly or on its own behalf.
                         </p>
-                        <p>
-                            {' '}
+                        <p className="text-justify">
                             14. Children Age 16 and Under should not use the
                             website unless supervised by an adult. AS SUCH, IF
                             YOU ARE 16 YEARS OLD OR YOUNGER, THE COMPANY
@@ -311,8 +305,7 @@ const terms = () => {
                             information, we will delete that child’s
                             identifiable information from our records.
                         </p>
-                        <p>
-                            {' '}
+                        <p className="text-justify">
                             15. This agreement shall be governed by and
                             construed in accordance with the laws of NSW,
                             without giving effect to any principles of conflicts
@@ -324,15 +317,129 @@ const terms = () => {
                             shall not affect the validity and enforceability of
                             any remaining provisions.
                         </p>
-                        <p>
-                            {' '}
+                        <p className="text-justify">
                             16. These Terms of Use may be revised from time to
                             time by updating this posting. You are bound by any
                             such revisions and should therefore periodically
                             visit this page to review the then current Terms of
-                            Use to which you are bound. Last Updated: June 4th,
-                            2020
+                            Use to which you are bound.
                         </p>
+                        <p className="text-justify">
+                            These terms of use and any other terms and documents
+                            expressly incorporated herein, each as may be
+                            amended, supplemented or replaced from time to time
+                            (together, the "Terms of Use") apply to your use of
+                            (and subscription to) the website, mobile
+                            application, blog, forum, online shop or one of our
+                            other products or services, all of which are part of
+                            RevelWell’s Site.
+                        </p>
+                        <p className="text-justify">
+                            Waiver and Release of Liability In consideration of
+                            RevelWell PTY LTD (collectively the “Site”) allowing
+                            me to participate, I acknowledge and understand that
+                            I have voluntarily chosen to participate in training
+                            activities provided by RevelWell Pty Ltd. I agree
+                            that the Site is in no way responsible for the
+                            safekeeping of my personal belongings while I attend
+                            class. I understand that the training may involve
+                            cycling, stretching, yoga, bodyweight exercises and
+                            other high exertion activities, and that I am not
+                            obligated to perform nor participate in any activity
+                            that I do not wish to do, and that it is my right to
+                            refuse such participation at any time during my
+                            training sessions. I understand there are inherent
+                            risks in all aspects of physical training and I
+                            acknowledge that I have been informed of the
+                            possible strenuous nature of the training and the
+                            potential for undesirable physiological results
+                            including, but not limited to, abnormal blood
+                            pressure, muscle soreness, fainting, heart attack
+                            and/or death. I warrant that I do not suffer from
+                            any medical condition that may affect my ability to
+                            participate safely in strenuous exercise. I
+                            understand that should I feel lightheaded, faint,
+                            dizzy, nauseated, or experience pain or discomfort,
+                            I am to stop the activity. I agree to WAIVE ANY AND
+                            ALL CLAIMS that I have or may have in the future
+                            against the Site, and its directors, officers,
+                            employees, agents, volunteers and independent
+                            contractors (all of whom are hereinafter
+                            collectively referred to as “the Releasees”). I
+                            agree to RELEASE THE RELEASEES from any and all
+                            liability for any loss, damage, injury or expense
+                            that I may suffer, or that my next of kin may suffer
+                            as a result of my participation in the programs,
+                            activities and services provided by RevelWell Pty
+                            Ltd, due to any cause whatsoever including
+                            negligence, breach of contract, or breach of any
+                            statutory or other duty of care. I agree to HOLD
+                            HARMLESS AND INDEMNIFY THE RELEASEES from any and
+                            all liability for any damage to the property of, or
+                            personal injury to, any third party, resulting from
+                            my participation in any program, activity or service
+                            provided by the releasees. This agreement shall be
+                            binding upon me, my successors, representatives,
+                            heirs, executors, assigns, or transferees. If any
+                            portion of this agreement is held invalid, I agree
+                            that the remainder of the agreement shall remain in
+                            full legal force and effect. Use of
+                            picture(s)/film/likeness: I agree to allow the gym,
+                            its agents, officers, principals, employees and
+                            volunteers to use picture(s), film and/or likeness
+                            of me. In the event I choose not to allow the use of
+                            the same for said purpose, I agree that I must
+                            inform RevelWell Pty Ltd of this in writing. I HAVE
+                            READ AND UNDERSTOOD THIS AGREEMENT AND I AM AWARE
+                            THAT BY ACCEPTING THIS “INFORMED CONSENT FORM” I AM
+                            WAIVING CERTAIN LEGAL RIGHTS (INCLUDING THE RIGHT TO
+                            SUE) WHICH I OR MY HEIRS, NEXT OF KIN, EXECUTOR,
+                            ADMINISTERS AND ASSIGNS MAY HAVE AGAINST THE
+                            RELEASEES. ANY QUESTIONS I HAD WERE ANSWERED TO MY
+                            FULL SATISFACTION.
+                        </p>
+                        <p className="text-justify">
+                            AUTOMATIC RENEWAL OF SUBSCRIPTION Your subscription
+                            will automatically renew unless you cancel before
+                            the end of the current billing period. However, you
+                            may cancel your subscription at any time by
+                            navigating to your profile page and following the
+                            prompts to cancel your subscription. Upon such
+                            cancellation, you will still be entitled to access
+                            the subscription services on the Site for the
+                            remainder of the duration that you have paid for.
+                        </p>
+                        <p className="text-justify">
+                            FORCE MAJEURE EVENT A "Force Majeure Event" means
+                            any event beyond the Site’s reasonable control,
+                            including flood, extraordinary weather conditions or
+                            earthquake, or other act of God, fire, war,
+                            insurrection, riot, labour dispute, accident, action
+                            of government, communications, health pandemic,
+                            power failure, or equipment or software malfunction.
+                            If a Force Majeure Event occurs that affects the
+                            Site’s ability to perform its obligations under
+                            these Terms of Use, the RevelWell Pty Ltd team will
+                            contact you as soon as reasonably possible to notify
+                            you and Site’s obligations under these Terms of Use
+                            will be suspended and the time of performance of our
+                            obligations will be extended for the duration of the
+                            Force Majeure Event.
+                        </p>
+                        <p className="text-justify">
+                            NO PURCHASE FOR RESALE The digital products (e.g.
+                            training videos) that are available on the Site are
+                            intended solely for direct sale to end consumers,
+                            and therefore the purchase of such digital products
+                            for resale (i.e. purchase with the intention for
+                            reselling the products to other consumers, business
+                            or third parties) is strictly prohibited. RevelWell
+                            Pty Ltd reserves the right to take any action to
+                            prevent resale of digital products, including
+                            restricting sales to you and cancelling any orders
+                            made by you.
+                        </p>
+                        <p>Last Updated: 31 August, 2020. </p>
                     </Row>
                 </Container>
             </Layout>

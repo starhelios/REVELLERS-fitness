@@ -5,8 +5,8 @@ const terms = () => {
     return (
         <>
             <Layout>
-                <Container>
-                    <Row className="my-5 text-justify">
+                <Container className="my-5 p-5 text-justify">
+                    <Row>
                         <h1>Privacy Policy</h1>
                         <p>
                             Privacy Policy Revelwell Pty Ltd (the “Company”)
