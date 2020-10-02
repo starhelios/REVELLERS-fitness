@@ -184,7 +184,7 @@ const BuyBike = () => {
                         >
                             $AUD 3,495 <br />{' '}
                             <span style={{ fontSize: '0.8rem' }}>
-                                (inc Delivery Australia Wide Early August &amp;
+                                (inc Delivery Australia Wide Early October &amp;
                                 1 Month RevelWell Subscription)
                             </span>
                         </p>
@@ -196,10 +196,10 @@ const BuyBike = () => {
                             }}
                         >
                             <button
-                                className="btn-disabled"
-                                //onClick={handleBuyPerformance}
+                                className="btn-primary"
+                                onClick={handleBuyPerformance}
                             >
-                                Sold Out
+                                BUY NOW
                             </button>
                         </div>
                     </article>

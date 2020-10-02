@@ -8,7 +8,7 @@ export function handler(event, context, callback) {
         .create(
             {
                 customer: stripeId,
-                return_url: 'https://www.revelwell.com.au',
+                return_url: 'https://www.revelwell.com.au/app/profile',
             },
             function(error, customer) {
                 if (error) {

@@ -1,7 +1,7 @@
 export const menuOptions = [
     { title: 'Home', slug: '/' },
     {
-        title: 'Todays Ride',
+        title: "Today's Ride",
         slug: '/app/daily_rides',
         isPrivateRoute: true,
     },

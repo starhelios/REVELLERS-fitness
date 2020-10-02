@@ -11,6 +11,11 @@ const Button = styled.button`
         color: ${COLORS.white};
     }
     ${props =>
+        props.profileButton &&
+        css`
+            width: 220px;
+        `}
+    ${props =>
         props.filled &&
         css`
             background: ${COLORS.oyster};

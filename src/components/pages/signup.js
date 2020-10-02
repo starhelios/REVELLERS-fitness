@@ -40,6 +40,7 @@ const Signup = () => {
         email: undefined,
         password: undefined,
         userPackage: 'plan_HF8Tc4J2WjLDAg',
+        terms: undefined,
     });
 
     const [isLoading, setIsLoading] = useState(false);
@@ -48,7 +49,7 @@ const Signup = () => {
     const [planIds, setPlanIds] = useState({});
 
     const { user, signupUser } = useIdentityContext();
-    const { email, password, full_name, userPackage } = userCredentials;
+    const { email, password, full_name, userPackage, terms } = userCredentials;
 
     useEffect(() => {
         fetchPlans()
@@ -179,7 +180,7 @@ const Signup = () => {
                         fluid={data.allFile.edges[0].node.childImageSharp.fluid}
                     />
                 </div>
-                <Row className="w-75 pt-4">
+                <Row className="pt-4">
                     <Col className="border rounded-lg p-5 mb-5">
                         <h1 className="m-auto py-4">Join The Crew</h1>
                         <p style={{ fontWeight: 'bold' }}>
@@ -302,7 +303,14 @@ const Signup = () => {
                                     )}
                                 </Form.Control>
                             </Form.Group>
-
+                            <Form.Group controlId="formBasicCheckbox">
+                                <Form.Check
+                                    type="checkbox"
+                                    name="terms"
+                                    onChange={handleUpdate}
+                                    label="I agree to RevelWell's Terms &amp; Conditions"
+                                />
+                            </Form.Group>
                             {isLoading ? (
                                 <p>
                                     Redirecting To Secure Checkout...{' '}
@@ -318,6 +326,7 @@ const Signup = () => {
                                         !password ||
                                         !full_name ||
                                         !userPackage ||
+                                        terms !== 'on' ||
                                         userCredentials.email !==
                                             userCredentials.reenterEmail
                                     }

@@ -1,35 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { useIdentityContext } from 'react-netlify-identity';
-import { Table, Container, Row } from 'react-bootstrap';
-import fetchPurchasedVideos from '../../utils/fetchPurchasedVideos';
+import { Container, Row } from 'react-bootstrap';
 import SEO from '../layout/seo';
 import Button from '../../styled_components/';
 import Img from 'gatsby-image';
-import { useStaticQuery, graphql, Link, navigate } from 'gatsby';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useStaticQuery, graphql, navigate } from 'gatsby';
 import Helmet from 'react-helmet';
-import fetchPlans from '../../utils/fetchPlans';
-import redirectToCheckout from '../../utils/redirectToCheckout';
-import fetchCustomerSubscriptions from '../../utils/fetchCustomerSubscriptions';
-import cancelStripeSubscription from '../../utils/cancelStripeSubscription';
 import applyCouponCode from '../../utils/applyCouponCode';
 import createBillingDashboardSession from '../../utils/createBillingDashboardSession';
 import getAllCouponCodes from '../../utils/getAllCouponCodes';
-import { RiMedal2Line } from 'react-icons/ri';
+import { RiMedal2Line, RiLockPasswordLine } from 'react-icons/ri';
+import { FaRegAddressCard } from 'react-icons/fa';
+import { MdDirectionsBike } from 'react-icons/md';
 import styles from '../../css/profile.module.css';
-const getLocalDateString = timeInMIlliseconds => {
-    const dateObj = new Date(timeInMIlliseconds);
-    const pad = n => (n < 10 ? '0' + n : n);
-    return (
-        pad(dateObj.getDate()) +
-        '/' +
-        pad(dateObj.getMonth() + 1) +
-        '/' +
-        dateObj.getFullYear()
-    );
-};
 
-const Profile = ({ location }) => {
+const Profile = () => {
     const data = useStaticQuery(graphql`
         {
             allFile(filter: { name: { eq: "brand-header2" } }) {
@@ -37,7 +22,7 @@ const Profile = ({ location }) => {
                     node {
                         name
                         childImageSharp {
-                            fluid(quality: 100, pngQuality: 100) {
+                            fluid(quality: 90, maxWidth: 600) {
                                 ...GatsbyImageSharpFluid
                             }
                         }
@@ -49,10 +34,6 @@ const Profile = ({ location }) => {
     const { user } = useIdentityContext();
     const { stripeId, full_name } = user?.user_metadata || {};
 
-    const [library, setLibrary] = useState([]);
-    const [plans, setPlans] = useState([]);
-    const [subscriptions, setSubscriptions] = useState([]);
-    const [cancelledSubscription, setCancelledSubscription] = useState();
     const [showCoupon, setCoupon] = useState(false);
     const [showCouponSuccess, setCouponSuccess] = useState(false);
     const [showCouponFailure, setCouponFailure] = useState(false);
@@ -61,7 +42,7 @@ const Profile = ({ location }) => {
     const [allCodes, setAllCodes] = useState([]);
     const [codeIsValid, setCodeIsValid] = useState(false);
     const [isApplying, setIsApplying] = useState(false);
-
+    const [loading, setLoading] = useState(false);
     const handleOnChange = event => {
         const value = event.target.value.toUpperCase();
         setCode(value);
@@ -84,7 +65,7 @@ const Profile = ({ location }) => {
     };
 
     const startBillingDashboard = () => {
-        console.log(stripeId);
+        setLoading(true);
         createBillingDashboardSession(stripeId)
             .then(res => res.json())
             .then(data => navigate(data.customer.url))
@@ -102,68 +83,6 @@ const Profile = ({ location }) => {
             });
     }, []);
 
-    useEffect(() => {
-        fetchPurchasedVideos({ stripeId })
-            .then(res => res.json())
-            .then(({ paymentIntents }) => {
-                if (paymentIntents?.data) {
-                    setLibrary(paymentIntents.data);
-                }
-            });
-    }, [stripeId]);
-
-    useEffect(() => {
-        fetchPlans()
-            .then(res => res.json())
-            .then(({ plans }) => {
-                if (Array.isArray(plans?.data)) {
-                    setPlans(plans.data);
-                }
-            })
-            .catch(error => console.error("Couldn't get plans:", error));
-    }, []);
-
-    useEffect(() => {
-        fetchCustomerSubscriptions({ stripeId })
-            .then(res => res.json())
-            .then(({ subscriptions }) => {
-                if (Array.isArray(subscriptions?.data)) {
-                    setSubscriptions(subscriptions.data);
-                }
-            })
-            .catch(error =>
-                console.error("Couldn't get subscriptions:", error)
-            );
-    }, [stripeId, cancelledSubscription]);
-
-    const subscribe = id => {
-        const lineItems = {};
-        const subscription = {
-            items: [
-                {
-                    plan: id,
-                },
-            ],
-        };
-        const metaData = {};
-
-        redirectToCheckout(undefined, user, lineItems, metaData, subscription);
-    };
-
-    const cancelSubscription = id => {
-        cancelStripeSubscription({
-            stripeId,
-            subscriptionId: id,
-        })
-            .then(res => res.json())
-            .then(data => {
-                setCancelledSubscription(data?.subscription?.plan?.nickname);
-                setSubscriptions([]);
-            })
-            .catch(error =>
-                console.error("Couldn't cancel subscription", error)
-            );
-    };
     const updateWithCoupon = () => {
         setIsApplying(true);
         applyCouponCode({
@@ -188,32 +107,85 @@ const Profile = ({ location }) => {
     };
 
     return (
-        <Container>
+        <Container
+            style={{
+                height: '80vh',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+            }}
+        >
             <Helmet />
             <SEO title="Profile" />
-            <Row className="mt-3">
+            <Row
+                className="mt-4"
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                }}
+            >
                 <div
                     style={{
-                        width: '50%',
-                        marginTop: 20,
-                        margin: 'auto',
+                        width: 400,
+                        marginBottom: 30,
                     }}
                 >
                     <Img
                         fluid={data.allFile.edges[0].node.childImageSharp.fluid}
                     />
                 </div>
+                <h2 className="m-auto text-center">
+                    Welcome Back, {full_name.split(' ', 1)}
+                </h2>
             </Row>
-            <Row className="mt-4 text-center">
-                <h1 className="m-auto">Welcome {full_name.split(' ', 1)}</h1>
-            </Row>
-            <Row>
-                <div className="w-50 pt-3 m-auto text-center">
-                    <Button onClick={toggleCoupon}>
-                        Click Here To Enter Voucher Code {<RiMedal2Line />}
+            <div
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                }}
+            >
+                <div style={{ flex: 1, marginTop: 30 }}>
+                    <Button
+                        profileButton
+                        onClick={() => navigate('/app/daily_rides')}
+                        className="m-auto"
+                    >
+                        Start Riding {<MdDirectionsBike />}
                     </Button>
                 </div>
-            </Row>
+                <div style={{ flex: 1, marginTop: 10 }}>
+                    <Button
+                        profileButton
+                        onClick={toggleCoupon}
+                        className="m-auto"
+                    >
+                        Enter Voucher Code {<RiMedal2Line />}
+                    </Button>
+                </div>
+                <div style={{ flex: 1, marginTop: 10 }}>
+                    <Button
+                        disabled={loading}
+                        profileButton
+                        onClick={startBillingDashboard}
+                        className="m-auto"
+                    >
+                        {loading ? 'Redirecting You' : 'Manage Subscription'}{' '}
+                        {<FaRegAddressCard />}
+                    </Button>
+                </div>
+                <div style={{ flex: 1, marginTop: 10 }}>
+                    <Button
+                        profileButton
+                        onClick={() => navigate('/reset_password/')}
+                        className="m-auto"
+                    >
+                        Change Password {<RiLockPasswordLine />}
+                    </Button>
+                </div>
+            </div>
             {showCoupon && (
                 <article className={styles.couponContainer}>
                     <h2>Enter Your Code</h2>
@@ -278,140 +250,6 @@ const Profile = ({ location }) => {
                         Try Another Code
                     </Button>
                 </article>
-            )}
-            <Row className="px-3">
-                <h3 className="my-4">
-                    Your Library:{' '}
-                    {
-                        library.filter(
-                            ({ description }) =>
-                                !description
-                                    ?.toLowerCase()
-                                    ?.includes('subscription')
-                        ).length
-                    }{' '}
-                    video
-                    {library.filter(
-                        ({ description }) =>
-                            !description
-                                ?.toLowerCase()
-                                ?.includes('subscription')
-                    ).length === 1
-                        ? ''
-                        : 's'}{' '}
-                </h3>
-                <Table striped bordered hover style={{ textAlign: 'center' }}>
-                    <thead>
-                        <tr>
-                            <th>Date Purchased</th>
-                            <th>Title</th>
-                            <th>Description</th>
-                            <th>Play Now</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {(!library?.length ||
-                            library?.[0]?.itemDescription
-                                ?.toLowerCase()
-                                .includes('subscription')) && (
-                            <tr key="no-purchases">
-                                <td colSpan="4">
-                                    {'No purchased videos to display'}
-                                </td>
-                            </tr>
-                        )}
-                        {library.map(
-                            ({
-                                created,
-                                status,
-                                metadata,
-                                description: itemDescription,
-                            }) => {
-                                // TODO: add whatever is needed to this metadata object
-                                const { description, name } = metadata;
-
-                                return (
-                                    !itemDescription
-                                        ?.toLowerCase()
-                                        .includes('subscription') && (
-                                        <tr key={created}>
-                                            <td>
-                                                {!!created &&
-                                                    getLocalDateString(
-                                                        created * 1000
-                                                    )}
-                                            </td>
-                                            <td>{!!name && name}</td>
-                                            <td>
-                                                {' '}
-                                                {!!description && description}
-                                            </td>
-                                            <td>
-                                                {status === 'succeeded' && (
-                                                    <Link to="/app/on_demand_rides/">
-                                                        <Button
-                                                            style={{
-                                                                marginLeft:
-                                                                    '20px',
-                                                            }}
-                                                        >
-                                                            PLAY{' '}
-                                                            <FontAwesomeIcon
-                                                                icon={
-                                                                    'play-circle'
-                                                                }
-                                                            />
-                                                        </Button>
-                                                    </Link>
-                                                )}
-                                            </td>
-                                        </tr>
-                                    )
-                                );
-                            }
-                        )}
-                    </tbody>
-                </Table>
-            </Row>
-            {!!cancelledSubscription && (
-                <Row className="d-flex justify-content-center mt-4 alert alert-danger">
-                    {cancelledSubscription} subscription has been cancelled
-                </Row>
-            )}
-            {!!subscriptions.length && !subscriptions?.[0]?.canceled_at ? (
-                <Row className="d-flex justify-content-center mt-4">
-                    <Button cancel onClick={() => cancelSubscription()}>
-                        Cancel{' '}
-                        {`${
-                            subscriptions?.[0]?.plan?.nickname
-                                ? subscriptions?.[0]?.plan?.nickname
-                                : ''
-                        } `}
-                        Subscription
-                    </Button>
-                </Row>
-            ) : (
-                plans.map(({ id, nickname, amount }) => {
-                    return (
-                        <Row
-                            key={id}
-                            className="d-flex justify-content-center mt-4"
-                        >
-                            {
-                                <Button onClick={() => subscribe(id)}>
-                                    {`Subscribe to our${!!nickname &&
-                                        ' ' + nickname} package ${!!amount &&
-                                        '- $' +
-                                            (
-                                                ((amount / 100) * 12) /
-                                                52
-                                            ).toFixed(2) +
-                                            ' per week, billed monthly'}`}
-                                </Button>
-                            }
-                        </Row>
-                    );
-                })
             )}
         </Container>
     );
