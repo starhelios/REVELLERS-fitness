@@ -33,7 +33,7 @@
     "gatsby-source-contentful": "^2.3.32",
     "gatsby-source-filesystem": "^2.2.2",
     "gatsby-source-stripe": "^3.0.7",
-    "gatsby-transformer-remark": "^2.7.3",
+    "gatsby-transformer-remark": "^5.25.1",
     "gatsby-transformer-sharp": "^2.4.3",
     "gsap": "^3.2.6",
     "hls.js": "^0.13.2",
